@@ -1,0 +1,476 @@
+/* BEGIN General Rules */
+
+.displayNone {
+  display: none;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+.displayInline {
+  display: inline;
+}
+
+.hiddenBlock {
+  visibility: hidden;
+}
+
+.green {
+  color: green;
+}
+
+.orange {
+  color: orange;
+}
+
+.fontsize120p {
+  font-size: 1.2rem; /* 120% of the base font size */
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* TODO check if warning is assign to inline or block elements and make it consistent */
+
+.warning {
+  margin: 1rem 0;
+  border-radius: 0.625rem; /* usually 0.625rem = 10px */
+  padding: 0.5rem 0.625rem; /* 8px 10px */
+  background-color: red;
+  color: white;
+  text-align: justify;
+}
+
+.highlight {
+  display: inline-block;
+  width: 100%;
+  border-radius: 0.5rem; /* 8px */
+  padding: 0.25rem 0; /* 4px 0 */
+  background-color: lightgray;
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* END General Rules */
+
+/* BEGIN Navbar compoment */
+
+/* sources of inspiration for the NavBar component design
+ * https://blog.logrocket.com/create-responsive-mobile-menu-with-css-no-javascript/
+ * https://blog.logrocket.com/create-responsive-navbar-react-css/
+ */
+
+#navbar {
+  --navbarBackgroundColor: #E0F8FF;
+  --hamburgerLineColor: black;
+  --navbarColor: black;
+  display: flex; /* makes it easier to position the hamburger to the right or the left hand side */
+  position: sticky;
+  top: 0; /* necessary (at least) to enable the 'sticky' animation */
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  /*align-items: center; messes up the display of the nav element which is also a flex item */
+  background-color: var(--navbarBackgroundColor);
+  color: var(--navbarColor);
+}
+
+#navbarLogo {
+  margin: auto 0 auto 2rem; /* centers the logo vertically since align-items can't be used */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Thanks to its "for" (or "htmlFor" in javascript) attribute, the label is linked
+ * to the checkbox input field. Clicking the label also "clicks" the checkbox.
+ * So we hide the checkbox as we can change its state with the label. */
+
+#hamburgerTrick {
+  display: none;
+}
+
+#hamburger {
+  display: block;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+}
+
+#hamburgerLine {
+  display: block;
+  position: relative; /* so its pseudo-element children can be positioned */
+  width: 2rem;
+  height: 0.25rem;
+  background-color: var(--hamburgerLineColor);
+}
+
+/* creates 2 pseudo-elements that are children of the #hamburgerLine block. */
+
+#hamburgerLine::before, #hamburgerLine::after {
+  display: block;
+  position: absolute;
+  width: 100%; /* % of the parent container i.e. #hamburgerLine. */
+  height: 100%;
+  background-color: var(--hamburgerLineColor);
+  content: '';
+  transition: all .2s ease-out;
+}
+
+#hamburgerLine::before {
+  top: -0.625rem; /* 10px */
+}
+
+#hamburgerLine::after {
+  top: 0.625rem;
+}
+
+#hamburgerTrick:checked ~ nav {
+  height: 100%; /* the transition doesn't seem to work with 'auto'. */
+}
+
+#hamburgerTrick:checked ~ #hamburger > #hamburgerLine {
+  background-color: transparent;
+}
+
+#hamburgerTrick:checked ~ #hamburger > #hamburgerLine::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+#hamburgerTrick:checked ~ #hamburger > #hamburgerLine::after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+#navbar > nav {
+  position: fixed; /* the 'fixed' position is important for the menu to overlay its content. */
+  /* the fixed position also removes the nav from the normal document flow which thus has no impact on the page layout */
+  width: 100%;
+  height: 0; /* initially the nav doesn't show up as its height is null */
+  margin-top: 4rem; /* places the nav just below the header 'band' */
+  overflow: hidden;
+  transition: height .5s ease-out;
+}
+
+#navbar ul {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  list-style: none;
+  background-color: var(--navbarBackgroundColor);
+}
+
+#navbar ul > li {
+  display: block;
+  margin: 1.25rem 0; /* 20px 0 */
+}
+
+@media (min-width: 48rem) { /* 768px */
+ #hamburger {
+    display: none;
+  }
+
+  #navbar > nav {
+    position: relative;
+    width: auto;
+    height: 100%;
+    margin: 0;
+  }
+
+  #navbar ul {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  #navbar ul > li {
+    margin: 1.5rem;
+  }
+}
+
+/* END Navbar compoment */
+
+/* BEGIN App compoments */
+
+header > div#logo {
+  margin-top: 3rem; /* makes some room for the header responsive menu 'band' */
+}
+
+header > div#logo, header > h1 {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+main > div { /* box max "outter" width (including margins) 544px = 480px + 2x32px */
+  width: 100%;
+  max-width: 30rem; /* 480px */
+  margin: 2rem;
+}
+
+/* END App compoments */
+
+/* BEGIN DiveForm compoments */
+
+fieldset { /* max "internal" content width (i.e. standard CSS box model) 438px = 480px - 2x1px - 2x20px */
+  display: flex;
+  margin: 1.25rem 0; /* 20px 0 */
+  border: 1px solid lightgray;
+  border-radius: 1.25rem; /* 20px */
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  flex-wrap: wrap;
+}
+
+fieldset label {
+  width: 55%; /* 240px / 438px (fieldset max content width) ~ 55% */
+  max-width: 15rem; /* 240px */
+  margin: 0.625rem 0;
+  padding: 0 0.5rem 0 0; /* padding right 8px */
+}
+
+fieldset select, fieldset input {
+  width: 30%;
+  max-width: 8rem; /* 128px */
+  margin: 0.625rem 0;
+  border-color: lightgray;
+}
+
+.validity {
+  position: relative;
+  margin: 0.75rem 0 0 1rem; /* 12px 0 0 16px */
+}
+
+input:invalid {
+  background-color: red;
+}
+
+input:invalid + span.validity:after {
+  content: 'x';
+  color: red;
+}
+
+input#cylinderPressureInputField:invalid ~ p#cylinderPressureWarning {
+  display: block;
+}
+
+input#pressureSafetyReserveInputField:invalid ~ p#pressureSafetyReserveWarning {
+  display: block;
+}
+
+input#diveDepthInputField:invalid ~ p#diveDepthWarning {
+  display: block;
+}
+
+#gazMixLabel {
+  padding: 0.375rem 0.625rem; /* 5px 10px */
+  border-radius: 0.375rem;
+  background-color: white;
+  color: green;
+  font-weight: bold;
+}
+
+#gazMixLabel.air {
+  background-color: lightblue;
+  color: blue;
+}
+
+#gazMixLabel.nitrox {
+  background-color: yellow;
+  color: green;
+}
+
+#repetitiveDives {
+  flex-wrap: wrap;
+}
+
+/* END DiveForm compoments */
+
+/* BEGIN DiveResults component */
+
+#diveResults > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#diveResults #shorterDive {
+  align-self: flex-start;
+  margin: 2rem 0;
+}
+
+#diveResults #diveSummary {
+  align-self: center;
+}
+
+#diveResults #longerDive {
+  align-self: flex-end;
+  margin: 2rem 0;
+}
+
+#diveResults > table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+#diveResults td {
+  padding: 0.25rem 0;
+}
+
+/* https://cssbuttoncreator.com/ */
+
+#diveResults span.button {
+  display: inline-block;
+  background: #3DF6F6;
+  background-image: linear-gradient(to bottom, #3DF6F6, #451ED0);
+  border-radius: 0.5rem;
+  color: #FFFFFF;
+  padding: 0.5rem;
+  box-shadow: 1px 1px 1rem 0 #000000;
+  text-shadow: 1px 1px 1rem #000000;
+  border: solid #337FED 1px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#diveResults span.button:hover {
+  border: solid #337FED 1px;
+  background: #451ED0;
+  background-image: linear-gradient(to bottom, #451ED0, #3DF6F6);
+  border-radius: 0.5rem;
+}
+
+/* END DiveResults component */
+
+/* BEGIN DiveSummary component */
+
+#diveSummary > table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+#diveSummary td:nth-child(1) {
+  width: 70%;
+}
+
+#diveSummary td:nth-child(2) {
+  width: 30%;
+}
+
+#diveSummary td {
+  padding: 0.25rem 0;
+}
+
+#safetyWarning {
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+#safetyWarning > p {
+  margin: 0;
+  padding: 0.625rem;
+  text-align: justify;
+}
+
+/* END DiveSummary component */
+
+#mn90TableAtDepth {
+  max-width: 40rem;
+}
+
+#mn90TableAtDepth > table {
+  width: 100%;
+  text-align: center;
+}
+
+#mn90TableAtDepth > table, #mn90TableAtDepth th, #mn90TableAtDepth td {
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+}
+
+#mn90TableAtDepth th, #mn90TableAtDepth td {
+  padding: 0.625rem 0; /* 10px 0 */
+}
+
+footer {
+  margin: 2.5rem 0; /* 40px 0 */
+}
+
+footer > p {
+  text-align: center;
+}
+
+#userConsent{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index:99;
+}
+
+#userConsent > div {
+  position: relative;
+  width: 80vw;
+  max-width: 20rem; /* 320px */
+  margin: 3rem auto 0;
+  padding: 2rem;
+  z-index: 100;
+  background: rgba(9, 9, 121, 1);
+  border-radius: 1.25rem; /* 20px */
+  text-align: justify;
+}
+
+#userConsent a, #userConsent a:visited {
+  color: white;
+}
+
+#consentButton {
+  margin: 3rem auto 0;
+  padding: 1.25rem; /* 20px */
+  width: 12.5rem; /* 200px */
+  border-radius: 1.25rem; /* 20px */
+  background-color: cyan;
+  color: rgb(9, 9, 121);
+  font-weight:bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media (width <= 480px) {
+  main > div {
+    margin: 0 1rem;
+  }
+
+  #diveSummary td:nth-child(1) {
+    width: 60%;
+  }
+  
+  #diveSummary td:nth-child(2) {
+    width: 40%;
+  }
+
+  #safetyWarning.warning {
+    margin: 0;
+  }
+
+  #mn90TableAtDepth > table td {
+    font-size: 0.8rem;
+  }
+ }
+
+@media (min-width: 1090px) and (orientation: landscape) {
+  #mn90TableAtDepth {
+    width: 43%;
+  }
+}

@@ -1,0 +1,11 @@
+body {
+  min-height: 100vh; /* covers a weird edge case on my Pixel 6 Pro */
+  height: max(100vh, 100%);
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(0deg, rgb(2, 0, 36) 0%, rgb(9, 9, 121) 35%, rgb(0, 149, 255) 100%) no-repeat; /* check https://cssgradient.io */
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+}

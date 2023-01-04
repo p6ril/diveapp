@@ -1,3 +1,5 @@
+#/bin/env sh
+
 # -a, --archive is equivalent to -rlptgoD
 # -E, --executability preserve executability
 # -g, --group preserve group
@@ -15,10 +17,3 @@ rsync -aXEv --delete \
       --exclude=LICENSE \
       --exclude=README.md \
       ./ ../pub
-
-cd ../pub
-rm -rf docs
-mv build docs
-cd docs
-sed -i -e 's/href="\//href=".\//g' -e 's/src="\//src=".\//g' index.html
-cd ..

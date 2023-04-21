@@ -2,6 +2,10 @@
 
 Scuba Diving Calculator App
 
+Application URL: https://diveapp.p6ril.fr/
+Github: https://github.com/p6ril/diveapp
+Quick video demo: https://youtu.be/XN9Oe3UvXkY
+
 [TOC]
 
 ## A Word Of Warning / Liability
@@ -41,22 +45,33 @@ As I'm French I use the "MN90 tables" (from the French National Marine) that pro
 ## App Software Architecture Roadmap
 
 * Move away from [Create React App](https://create-react-app.dev/) and use [Vite](https://vitejs.dev/) instead
+  * Learning material:
+    * [Use Vite to Speed Up Web Development](https://www.freecodecamp.org/news/complete-vite-course-for-beginners/)
+
 * Rework the app from scratch to avoid props drilling => continue learning React and implement useContext  and useReducer hooks
   * Learning material:
     * [React State Management – Intermediate JavaScript Course](https://www.youtube.com/watch?v=-bEzt5ISACA)
     * [React State Hooks: useReducer, useState, useContext](https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/)
     * [How to create Redux with React Hooks?](https://www.robinwieruch.de/redux-with-react-hooks/)
+    * [How to Use the React Context API in Your Projects](https://www.freecodecamp.org/news/context-api-in-react/)
 * A good next learning step could be to use a proper state management 3rd party. Redux may be an overkill. A more lightweight library like [Zustand](https://github.com/pmndrs/zustand) could be a good start
 * Implement automated unit tests to avoid regressions:
   * Learning material:
     * [How to Write Unit Tests in React](https://www.freecodecamp.org/news/how-to-write-unit-tests-in-react/)
     * [How to Test User Interactions Using the React Testing Library](https://www.freecodecamp.org/news/how-to-test-user-interactions-in-react/)
-  
+    * [How to Test User Interactions Using the React Testing Library]
+
 * Improve forms accessibility and WCAG support
   * Learning material:
     * [Web Accessibility – Common ARIA Mistakes to Avoid](https://www.freecodecamp.org/news/web-accessibility-common-aria-mistakes-to-avoid/)
     * [How to Build HTML Forms Right](https://austingil.com/how-to-build-html-forms-right-semantics/)
-  
+    * [How to Build Forms in React](https://www.freecodecamp.org/news/how-to-build-forms-in-react/)
+    * [How to Validate Forms in React – A Step-By-Step Tutorial for Beginners](https://www.freecodecamp.org/news/how-to-validate-forms-in-react/)
+
+* Check performances
+  * Learning material:
+    * [How to Measure and Improve the Performance of a React App](https://www.freecodecamp.org/news/measure-and-improve-performance-of-react-apps/)
+
 * Learn typescript and switch from javascript to typescrit ?
   * Learning material:
     * [How to Use TypeScript – Beginner-Friendly TS Tutorial](https://www.freecodecamp.org/news/an-introduction-to-typescript/)

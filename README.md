@@ -47,7 +47,6 @@ As I'm French I use the "MN90 tables" (from the French National Marine) that pro
 * Move away from [Create React App](https://create-react-app.dev/) and use [Vite](https://vitejs.dev/) instead
   * Learning material:
     * [Use Vite to Speed Up Web Development](https://www.freecodecamp.org/news/complete-vite-course-for-beginners/)
-
 * Rework the app from scratch to avoid props drilling => continue learning React and implement useContext  and useReducer hooks
   * Learning material:
     * [React State Management – Intermediate JavaScript Course](https://www.youtube.com/watch?v=-bEzt5ISACA)
@@ -59,31 +58,25 @@ As I'm French I use the "MN90 tables" (from the French National Marine) that pro
   * Learning material:
     * [How to Write Unit Tests in React](https://www.freecodecamp.org/news/how-to-write-unit-tests-in-react/)
     * [How to Test User Interactions Using the React Testing Library](https://www.freecodecamp.org/news/how-to-test-user-interactions-in-react/)
-    * [How to Test User Interactions Using the React Testing Library]
-
 * Improve forms accessibility and WCAG support
   * Learning material:
     * [Web Accessibility – Common ARIA Mistakes to Avoid](https://www.freecodecamp.org/news/web-accessibility-common-aria-mistakes-to-avoid/)
     * [How to Build HTML Forms Right](https://austingil.com/how-to-build-html-forms-right-semantics/)
     * [How to Build Forms in React](https://www.freecodecamp.org/news/how-to-build-forms-in-react/)
     * [How to Validate Forms in React – A Step-By-Step Tutorial for Beginners](https://www.freecodecamp.org/news/how-to-validate-forms-in-react/)
-
+    * [Web Accessibility Best Practices – How to Ensure Everyone Can Use Your Website](https://www.freecodecamp.org/news/web-accessibility-best-practices/)
 * Check performances
   * Learning material:
     * [How to Measure and Improve the Performance of a React App](https://www.freecodecamp.org/news/measure-and-improve-performance-of-react-apps/)
-
 * Learn typescript and switch from javascript to typescrit ?
   * Learning material:
     * [How to Use TypeScript – Beginner-Friendly TS Tutorial](https://www.freecodecamp.org/news/an-introduction-to-typescript/)
-
     * [How to Use TypeScript in React Apps](https://www.freecodecamp.org/news/using-typescript-in-react-apps/)
-
     * [How to use TypeScript with React... But should you?](https://www.youtube.com/watch?v=ydkQlJhodio)
-
     * [React Typescript Tutorial](https://www.youtube.com/watch?v=Z5iWr6Srsj8)
-
     * [TypeScript Course In ReactJS - TypeScript](https://www.youtube.com/watch?v=1jMJDbq7ZX4)
-
+    * [How to Use TypeScript with React](https://www.freecodecamp.org/news/use-typescript-with-react/)
+    * [Configurer un projet TypeScript / React pour les tests unitaires et d'intégration avec Jest et testing-library](https://craftacademy.substack.com/p/configurer-un-projet-typescript-react)
 * Build up an API to request MN90 table data through queries (that would introduce a back-end component, what would the benefits be besides having fun implementing a scuba diving API platform ... which in itself could be a learning target) ? Leverage Flask ?
 
 ## Features Roadmap
